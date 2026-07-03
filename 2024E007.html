@@ -12,20 +12,29 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
+        }
+
+        .card {
+            width: 90vw;
+            max-width: 350px;   /* keeps it like real ID card size */
+            height: auto;
         }
 
         img {
-            width: 100vw;
-            height: 100vh;
-            object-fit: contain; /* keeps full card visible */
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 10px;
         }
     </style>
 </head>
 
 <body>
 
-    <img src="images/aty.png" alt="Employee ID Card">
+    <div class="card">
+        <img src="images/aty.png" alt="Employee ID Card">
+    </div>
 
 </body>
 </html>
