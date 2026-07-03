@@ -15,26 +15,17 @@
             height: 100vh;
         }
 
-        .card {
-            width: 95vw;
-            max-width: 700px;   /* makes it horizontal wide */
-        }
-
         img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            width: 100vw;
+            height: 100vh;
+            object-fit: contain; /* keeps full card visible */
         }
     </style>
 </head>
 
 <body>
 
-    <div class="card">
-        <img src="images/aty.png" alt="Employee ID Card">
-    </div>
+    <img src="images/aty.png" alt="Employee ID Card">
 
 </body>
 </html>
