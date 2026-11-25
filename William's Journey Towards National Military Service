@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Willipedia — William's Journey Towards National Military Service</title>
+  <style>
+    :root {
+      --blue: #0645ad;
+      --link: #0645ad;
+      --border: #a7d7f9;
+      --muted: #54595d;
+      --paper: #ffffff;
+      --soft: #f8f9fa;
+      --ink: #202122;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: #f8f9fa;
+      font: 14px/1.65 Arial, Helvetica, sans-serif;
+    }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .topbar {
+      height: 54px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 0 24px;
+      background: #fff;
+      border-bottom: 1px solid #c8ccd1;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+    }
+    .brand { display: flex; align-items: center; gap: 9px; min-width: 220px; }
+    .brand-mark {
+      width: 31px; height: 31px; border: 2px solid #72777d; border-radius: 50%;
+      display: grid; place-items: center; font: 22px Georgia, serif; color: #54595d;
+    }
+    .brand-name { font: 20px Georgia, serif; letter-spacing: -.5px; }
+    .brand-sub { display: block; font: 10px Arial, sans-serif; letter-spacing: 1.5px; color: #54595d; }
+    .search { flex: 1; max-width: 520px; display: flex; }
+    .search input {
+      width: 100%; padding: 8px 11px; border: 1px solid #a2a9b1; border-right: 0;
+      font-size: 14px; background: #fff;
+    }
+    .search button { border: 1px solid #a2a9b1; background: #f8f9fa; padding: 0 15px; cursor: pointer; }
+    .toplinks { margin-left: auto; color: var(--blue); white-space: nowrap; }
+    .page { max-width: 1240px; margin: 0 auto; display: grid; grid-template-columns: 175px minmax(0, 1fr); min-height: calc(100vh - 54px); background: white; }
+    aside {
+      padding: 24px 15px; border-right: 1px solid #eaecf0; background: #fff;
+      font-size: 12px;
+    }
+    aside h3 { font-weight: normal; color: #54595d; font-size: 12px; border-bottom: 1px solid #c8ccd1; padding-bottom: 5px; margin: 18px 0 7px; }
+    aside a { display: block; padding: 3px 0; }
+    main { padding: 28px 34px 60px; min-width: 0; }
+    .tabs { display: flex; justify-content: space-between; border-bottom: 1px solid #a7d7f9; margin: -4px 0 22px; color: var(--blue); font-size: 12px; }
+    .tabs div { display: flex; gap: 17px; padding: 0 0 8px; }
+    .tabs .active { color: #202122; border-bottom: 2px solid #202122; }
+    .notice {
+      background: #f8f9fa; border: 1px solid #c8ccd1; padding: 9px 12px;
+      font-size: 12px; margin-bottom: 18px; color: #54595d;
+    }
+    h1 { font: 32px/1.25 Georgia, 'Times New Roman', serif; font-weight: normal; margin: 0 0 7px; }
+    .subtitle { color: #54595d; border-bottom: 1px solid #a2a9b1; padding-bottom: 12px; margin-bottom: 17px; }
+    .lead { font-size: 14px; }
+    .infobox {
+      float: right; width: 280px; margin: 0 0 18px 24px; border: 1px solid #a2a9b1;
+      background: #f8f9fa; padding: 4px; font-size: 12px; line-height: 1.45;
+    }
+    .infobox-title { text-align: center; font-weight: bold; background: #eaecf0; padding: 8px 5px; font-size: 15px; }
+    .portrait {
+      height: 270px; margin: 5px 0; background: linear-gradient(145deg,#e9edf2,#d5dce5);
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      color: #54595d; border: 1px solid #c8ccd1; overflow: hidden; position: relative;
+    }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; display: none; }
+    .portrait .placeholder { padding: 18px; }
+    .portrait .silhouette { font-size: 64px; display: block; margin-bottom: 8px; }
+    .caption { text-align: center; font-size: 11px; color: #54595d; margin: 3px 0 7px; }
+    .infobox table { width: 100%; border-collapse: collapse; }
+    .infobox th, .infobox td { padding: 5px 6px; border-top: 1px solid #eaecf0; vertical-align: top; text-align: left; }
+    .infobox th { width: 38%; background: #eaecf0; font-weight: normal; }
+    .toc { display: table; min-width: 245px; background: #f8f9fa; border: 1px solid #a2a9b1; padding: 9px 18px 12px; margin: 20px 0; font-size: 13px; }
+    .toc-title { text-align: center; font-weight: bold; margin-bottom: 4px; }
+    .toc ol { margin: 5px 0 0; padding-left: 22px; }
+    .toc li { padding: 1px 0; }
+    h2 { font: 24px Georgia, 'Times New Roman', serif; font-weight: normal; border-bottom: 1px solid #a2a9b1; padding-bottom: 4px; margin: 28px 0 10px; }
+    h3 { font: 18px Georgia, 'Times New Roman', serif; font-weight: normal; margin: 20px 0 7px; }
+    .edit { font: 12px Arial, sans-serif; color: var(--blue); }
+    .timeline { border-left: 3px solid #a7d7f9; margin: 15px 0 15px 9px; padding-left: 18px; }
+    .event { margin: 0 0 15px; position: relative; }
+    .event::before { content: ""; width: 9px; height: 9px; background: #36c; border-radius: 50%; position: absolute; left: -24px; top: 7px; }
+    .date { color: #54595d; font-size: 12px; font-weight: bold; }
+    .quote { border-left: 3px solid #c8ccd1; margin: 14px 0; padding: 7px 14px; color: #54595d; background: #fafafa; }
+    .references { font-size: 12px; }
+    footer { border-top: 1px solid #c8ccd1; margin-top: 40px; padding-top: 12px; color: #54595d; font-size: 11px; }
+    .tag { display: inline-block; border: 1px solid #a2a9b1; border-radius: 2px; padding: 1px 5px; font-size: 10px; color: #54595d; margin-left: 5px; }
+    @media (max-width: 800px) {
+      .page { grid-template-columns: 1fr; }
+      aside { display: none; }
+      main { padding: 20px 16px 45px; }
+      .brand { min-width: auto; }
+      .brand-name { font-size: 17px; }
+      .toplinks { display: none; }
+      .infobox { float: none; width: min(100%, 340px); margin: 15px auto; }
+      h1 { font-size: 27px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">W</div>
+      <div><span class="brand-name">Willipedia</span><span class="brand-sub">THE UNOFFICIAL ENCYCLOPEDIA</span></div>
+    </div>
+    <form class="search" onsubmit="event.preventDefault(); alert('Search is just for decoration in this parody edition.');">
+      <input aria-label="Search" placeholder="Search this encyclopedia">
+      <button type="submit">Search</button>
+    </form>
+    <div class="toplinks"><a href="#about">About</a> &nbsp; <a href="#references">References</a></div>
+  </header>
+
+  <div class="page">
+    <aside>
+      <h3>MAIN MENU</h3>
+      <a href="#top">Main page</a>
+      <a href="#biography">Biography</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#faq">Questions</a>
+      <h3>CONTENTS</h3>
+      <a href="#overview">Overview</a>
+      <a href="#background">Background</a>
+      <a href="#preparations">Preparations</a>
+      <a href="#public-reaction">Public reaction</a>
+      <a href="#references">References</a>
+      <h3>TOOLS</h3>
+      <a href="#about">Printable version</a>
+      <a href="#about">Page information</a>
+    </aside>
+
+    <main id="top">
+      <div class="tabs">
+        <div><span class="active">Article</span><span>Talk</span></div>
+        <div><span>Read</span><span>Edit</span><span>View history</span></div>
+      </div>
+
+      <div class="notice">
+        <strong>PARODY NOTICE:</strong> This is a fictional joke page created by friends. It is not an official biography, government announcement, military notice, or statement about William's actual plans.
+      </div>
+
+      <h1>William's Journey Towards National Military Service</h1>
+      <div class="subtitle">From Willipedia, the Totally Unofficial Encyclopedia &nbsp; <span class="tag">Fictional article</span></div>
+
+      <div class="infobox">
+        <div class="infobox-title">William</div>
+        <div class="portrait" id="portrait">
+          <img id="portraitImage" alt="William's portrait">
+          <div class="placeholder" id="placeholder">
+            <span class="silhouette"></span>
+            <strong>Portrait of William</strong><br>
+            <span>Replace this placeholder with an approved funny photo.</span>
+          </div>
+        </div>
+        <div class="caption">William.</div>
+        <table>
+          <tr><th>Known for</th><td>Being the main character of the group chat</td></tr>
+          <tr><th>Occupation</th><td>Friend, part-time legend</td></tr>
+          <tr><th>Status</th><td>Subject of this fictional article</td></tr>
+          <tr><th>First appearance</th><td>In the friends' camera roll</td></tr>
+          <tr><th>Recognition</th><td>Locally famous (according to his friends)</td></tr>
+        </table>
+      </div>
+
+      <p class="lead" id="overview">
+        <strong>William's Journey Towards National Military Service</strong> is a fictional, humorous account created by William's friends and documented by Willipedia's highly unofficial editorial department. The article chronicles William's imaginary rise to public prominence, his legendary facial expressions, and the increasingly dramatic attention surrounding his supposed journey.
+      </p>
+      <p>
+        Despite its academic appearance, this page is entirely satirical. It does not claim that William has been selected, summoned, registered, or ordered to perform military service. All quotations, statistics, headlines, and events are fictional. Any resemblance to an actual announcement is entirely unintended.
+      </p>
+
+      <nav class="toc" aria-label="Contents">
+        <div class="toc-title">Contents <a href="#top" class="edit">[hide]</a></div>
+        <ol>
+          <li><a href="#background">Background</a></li>
+          <li><a href="#biography">Biography</a></li>
+          <li><a href="#preparations">The alleged preparations</a></li>
+          <li><a href="#timeline">Timeline of events</a></li>
+          <li><a href="#public-reaction">Public reaction</a></li>
+          <li><a href="#faq">Frequently asked questions</a></li>
+          <li><a href="#references">References</a></li>
+        </ol>
+      </nav>
+
+      <section id="background">
+        <h2>Background <a class="edit" href="#top">[edit]</a></h2>
+        <p>William first came to public attention after his friends began collecting photographs that were considered far too powerful to remain in a private camera roll. The collection later inspired the creation of this unofficial encyclopedia entry.</p>
+        <p>According to completely fictional sources, the announcement of this page caused a significant increase in group-chat activity.</p>
+      </section>
+
+      <section id="biography">
+        <h2>Biography <a class="edit" href="#top">[edit]</a></h2>
+        <p>William is described by his friends as a memorable individual with a distinctive sense of humour and an unusually large collection of photographic evidence. His biography remains under development by the unofficial editorial team.</p>
+        <div class="quote">“I would like to thank absolutely nobody for making this page.” <span class="tag">Imaginary quotation</span></div>
+      </section>
+
+      <section id="preparations">
+        <h2>The alleged preparations <a class="edit" href="#top">[edit]</a></h2>
+        <p>This section is dedicated to the dramatic, entirely fictional preparations imagined by the editorial team. No real military training, recruitment process, or service instructions are described here.</p>
+        <ul>
+          <li>Maintaining a respectable public image.</li>
+          <li>Practising the art of looking serious in photographs.</li>
+          <li>Preparing for unexpected interviews from imaginary reporters.</li>
+          <li>Learning to accept that the group chat has become a news agency.</li>
+        </ul>
+      </section>
+
+      <section id="timeline">
+        <h2>Timeline of events <a class="edit" href="#top">[edit]</a></h2>
+        <div class="timeline">
+          <div class="event"><div class="date">Chapter 1 — The discovery</div>A photograph is found. The editorial committee immediately requests an emergency meeting.</div>
+          <div class="event"><div class="date">Chapter 2 — The investigation</div>Friends begin examining the available photographic evidence. William declines to comment.</div>
+          <div class="event"><div class="date">Chapter 3 — The announcement</div>Willipedia officially opens its first article dedicated to William.</div>
+          <div class="event"><div class="date">Chapter 4 — The international incident</div>William is reportedly seen looking serious for approximately 3.5 seconds. Experts remain confused.</div>
+          <div class="event"><div class="date">Chapter 5 — To be continued</div>The editorial committee awaits further developments, preferably after asking William before sharing anything publicly.</div>
+        </div>
+      </section>
+
+      <section id="public-reaction">
+        <h2>Public reaction <a class="edit" href="#top">[edit]</a></h2>
+        <p>Friends have expressed a wide range of reactions, including confusion, laughter, and requests for clarification. One anonymous observer reportedly described the situation as “a completely unnecessary use of website development skills”.
+
+<h3>Selected headlines</h3>
+<ul>
+  <li><strong>BREAKING:</strong> William spotted looking directly at the camera. Witnesses describe the moment as “uncomfortable but historic”.</li>
+  <li><strong>EXCLUSIVE:</strong> Editorial team runs out of flattering photographs. Emergency meeting scheduled.</li>
+  <li><strong>DEVELOPING:</strong> William asks why his name is appearing on the internet. Willipedia refuses to panic.</li>
+  <li><strong>WORLD NEWS:</strong> Group chat remains active despite having absolutely no new information.</li>
+</ul></p>
+        <div class="infobox" style="float:none; width:min(100%, 460px); margin:18px 0; background:#f8f9fa;">
+          <div class="infobox-title">Willipedia's Unofficial William Statistics</div>
+          <table>
+            <tr><th>Meme potential</th><td>99.9% (committee estimate)</td></tr>
+            <tr><th>Photographic evidence</th><td>Classified by the group chat</td></tr>
+            <tr><th>Serious expression duration</th><td>3.5 seconds (unverified)</td></tr>
+            <tr><th>Main character energy</th><td>Statistically immeasurable</td></tr>
+            <tr><th>Peaceful group-chat days</th><td>Pending investigation</td></tr>
+          </table>
+          <div class="caption">All figures are fictional and have not been peer-reviewed.</div>
+        </div>
+      </section>
+
+      <section id="faq">
+        <h2>Frequently asked questions <a class="edit" href="#top">[edit]</a></h2>
+        <h3>Is this a real government announcement?</h3>
+        <p>No. This is a fictional parody page made for entertainment.</p>
+        <h3>Has William actually been called for military service?</h3>
+        <p>This page makes no claim about William's real circumstances or plans.</p>
+        <h3>Who wrote this article?</h3>
+        <p>An extremely unofficial committee of friends with too much free time.</p>
+        <h3>Are the statistics real?</h3>
+        <p>No. Any numbers, rankings, or assessments published by Willipedia are fictional and exist solely for entertainment.</p>
+      </section>
+
+      <section id="references">
+        <h2>References <a class="edit" href="#top">[edit]</a></h2>
+        <ol class="references">
+          <li>The Group Chat Editorial Board. <i>Minutes of a Very Serious Meeting</i>. Fictional publication.</li>
+          <li>Department of Unnecessary Investigations. <i>The William File</i>. Unofficial archive.</li>
+          <li>Personal camera-roll collection, shared with permission.</li>
+        </ol>
+      </section>
+
+      <footer id="about">
+        This page is an independent parody project and is not affiliated with Wikipedia, Willipedia, or any government or military organization. All fictional details are intended as jokes.
+        <br><br>Last edited by the Willipedia Editorial Committee.
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // To add William's photo, put the image file beside this HTML file
+    // and change the filename below, for example: "william.jpg".
+    const williamPhoto = "[https://github.com/lawoonbhonekhant83-ux/kidsarefirst-employee.id/blob/main/photo_2026-11-25_23-53-30.jpg?raw=true](https://github.com/lawoonbhonekhant83-ux/kidsarefirst-employee.id/blob/main/photo_2026-11-25_23-53-30.jpg?raw=true)";
+    if (williamPhoto) {
+      const image = document.getElementById("portraitImage");
+      image.src = williamPhoto;
+      image.style.display = "block";
+      document.getElementById("placeholder").style.display = "none";
+    }
+  </script>
+</body>
+</html>
